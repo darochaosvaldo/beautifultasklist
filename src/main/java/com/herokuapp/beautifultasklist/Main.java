@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example;
+package com.herokuapp.beautifultasklist;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

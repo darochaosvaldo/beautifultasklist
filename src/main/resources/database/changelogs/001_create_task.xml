@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
+   http://www.liquibase.org/xml/ns/dbchangelog 
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<changeSet author="dev_tasklist" id="001_create_task">
+		<createTable tableName="tb_task">
+			<column name="id" type="int" autoIncrement="true" incrementBy="1">
+				<constraints primaryKey="true" nullable="false"
+						primaryKeyName="pk_task" />
+			</column>
+			<column name="ds_title" type="varchar(255)" >
+				<constraints nullable="false"/>
+			</column>
+			<column name="ds_description" type="varchar(255)" />
+			<column name="st_status" type="boolean" defaultValueBoolean="true">
+				<constraints nullable="false"/>
+			</column>
+			<column name="dt_creation" type="timestamp" >
+				<constraints nullable="false"/>
+			</column>
+			<column name="dt_last_edition" type="timestamp" />
+			<column name="dt_removal" type="timestamp" />
+			<column name="dt_conclusion" type="timestamp" />
+		</createTable>
+		
+	</changeSet>
+
+</databaseChangeLog>
