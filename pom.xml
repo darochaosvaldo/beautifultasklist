@@ -112,6 +112,14 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<configuration>
+					<changeLogFile>src/main/resources/database/changelogs/changelog_master.xml</changeLogFile>
+					<url>${env.JDBC_DATABASE_URL}</url>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
