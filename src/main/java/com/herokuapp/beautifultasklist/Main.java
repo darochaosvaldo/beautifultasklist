@@ -57,16 +57,6 @@ public class Main {
 
 	@RequestMapping("/")
 	String index() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("beautifultasklist");
-		EntityManager entityManager = factory.createEntityManager();
-
-		Task task = new Task();
-		task.setTitle("Teste");
-		task.setStatus(Boolean.FALSE);
-		task.setCreation(new Date());
-
-		entityManager.persist(task);
-
 		return "index";
 	}
 
