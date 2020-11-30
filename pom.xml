@@ -116,15 +116,15 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.liquibase</groupId>
-				<artifactId>liquibase-maven-plugin</artifactId>
-				<configuration>
-					<changeLogFile>src/main/resources/database/changelogs/changelog_master.xml</changeLogFile>
-					<url>${env.JDBC_DATABASE_URL}</url>
-					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-				</configuration>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.liquibase</groupId> -->
+<!-- 				<artifactId>liquibase-maven-plugin</artifactId> -->
+<!-- 				<configuration> -->
+<!-- 					<changeLogFile>src/main/resources/database/changelogs/changelog_master.xml</changeLogFile> -->
+<!-- 					<url>${env.JDBC_DATABASE_URL}</url> -->
+<!-- 					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 
