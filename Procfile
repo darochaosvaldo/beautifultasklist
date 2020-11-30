@@ -1,2 +1,2 @@
-web: java -jar target/java-getting-started-1.0.jar
+web: java -jar target/beautiful-task-list-1.0.jar
 release: ./mvnw liquibase:update
