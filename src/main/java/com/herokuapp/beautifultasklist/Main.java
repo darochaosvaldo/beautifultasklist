@@ -25,7 +25,7 @@ import java.util.Date;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,8 +50,8 @@ public class Main {
 	@Autowired
 	private DataSource dataSource;
 
-	@Autowired
-	private EntityManagerFactory entityManagerFactory;
+	@PersistenceContext
+	private EntityManager em;
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(Main.class, args);
@@ -64,15 +64,13 @@ public class Main {
 
 	@RequestMapping("/testdb")
 	String testdb(Map<String, Object> model) {
-		// EntityManagerFactory factory = Persistence.createEntityManagerFactory("beautifultasklist");
-		EntityManager entityManager = this.entityManagerFactory.createEntityManager();
 
 		Task task = new Task();
 		task.setTitle("Teste");
 		task.setStatus(Boolean.FALSE);
 		task.setCreation(new Date());
 
-		entityManager.persist(task);
+		this.em.persist(task);
 
 		return "testdb";
 	}
