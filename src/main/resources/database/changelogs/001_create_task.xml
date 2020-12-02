@@ -29,6 +29,7 @@
 			<column name="dt_conclusion" type="timestamp" />
 		</createTable>
 		
+		<createSequence sequenceName="hibernate_sequence" startValue="1"/>
 	</changeSet>
 
 </databaseChangeLog>
