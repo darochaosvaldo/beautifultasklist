@@ -23,6 +23,11 @@ public class TaskListController {
 		this.taskRepo = taskRepo;
 	}
 
+	@RequestMapping("/")
+	String index() {
+		return "index";
+	}
+
 	@RequestMapping("/testdb")
 	@ResponseBody
 	String testdb(Map<String, Object> model) {
