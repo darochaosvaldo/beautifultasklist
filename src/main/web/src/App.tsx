@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { Checkbox } from '@material-ui/core';
 
 function App() {
 
-  async function testTasks() {
-    let response = await fetch("/api/tasks");
-    let body = await response.json();
-    console.log(body)
-  }
+  const [data, setData] = useState<any[]>([]);
 
-  testTasks();
+  useEffect(() => {
+    fetch("/tasklist")
+      .then((response) => response.json())
+      .then((json) => {
+        setData([...json]);
+        // Aux
+        console.log(json);
+      });
+  }, []);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>
-          Hello World!
-        </h1>
-      </header>
+      <ul>
+        {data.map(item => (
+          <li>
+            {item.title}
+            <Checkbox value={item.status} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

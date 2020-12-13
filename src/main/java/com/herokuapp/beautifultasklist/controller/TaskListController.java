@@ -28,9 +28,15 @@ public class TaskListController {
 		return "index";
 	}
 
+	@RequestMapping("/tasklist")
+	@ResponseBody
+	public Iterable<Task> list(Map<String, Object> model) {
+		return this.taskRepo.findAll();
+	}
+
 	@RequestMapping("/testdb")
 	@ResponseBody
-	String testdb(Map<String, Object> model) {
+	public String testdb(Map<String, Object> model) {
 		Task task = new Task();
 		task.setTitle("Teste");
 		task.setStatus(Boolean.FALSE);
