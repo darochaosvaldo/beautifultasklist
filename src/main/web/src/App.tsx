@@ -19,10 +19,10 @@ function App() {
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [status, setStatus] = React.useState(false);
-  const [creation, setCreation] = React.useState(new Date());
-  const [lastEdition, setLastEdition] = React.useState(new Date());
-  const [removal, setRemoval] = React.useState(new Date());
-  const [conclusion, setConclusion] = React.useState(new Date());
+  const [creation, setCreation] = React.useState();
+  const [lastEdition, setLastEdition] = React.useState();
+  const [removal, setRemoval] = React.useState();
+  const [conclusion, setConclusion] = React.useState();
 
   // Handlers de eventos de atualização do formulário 
   const handleTitleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => setTitle(event.target.value);
@@ -88,8 +88,16 @@ function App() {
   }
 
   // Handler da checkbox que indica se Task está ou não completa
-  const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // TODO
+  const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const aux: any[] = [...data];
+
+    const value = event.target.checked;
+
+    aux[index].status = value;
+
+    asyncSave(aux[index]);
+
+    setData(aux);
   };
 
   // Componentes da interface
@@ -107,10 +115,9 @@ function App() {
           My Beautiful Task List!
       </Typography>
 
-
-        {data.map(item => (
+        {data.map((item, index) => (
           <Grid>
-            <Checkbox checked={item.status} onChange={handleStatusChange} />
+            <Checkbox checked={item.status} onChange={event => handleStatusChange(event, index)} />
             {item.title}
           </Grid>
         ))}
@@ -120,7 +127,6 @@ function App() {
             <TextField
               name="title"
               className={classes.textField}
-              required
               label="Title"
               value={title}
               onChange={handleTitleChange}
@@ -129,7 +135,6 @@ function App() {
             <Button
               variant="contained"
               color="primary"
-              //preventDefault
               className={classes.submit}
               onClick={handleSubmit}
             >

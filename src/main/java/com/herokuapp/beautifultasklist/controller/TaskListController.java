@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.herokuapp.beautifultasklist.model.Task;
-import com.herokuapp.beautifultasklist.model.TaskRepository;
+import com.herokuapp.beautifultasklist.service.TaskService;
 
 @Controller
 @Component
 public class TaskListController {
 
-	private TaskRepository taskRepo;
+	private TaskService service;
 	private static final String INDEX = "index";
 
 	@Autowired
-	public TaskListController(TaskRepository taskRepo) {
-		this.taskRepo = taskRepo;
+	public TaskListController(TaskService service) {
+		this.service = service;
 	}
 
 	@RequestMapping("/")
@@ -35,7 +35,7 @@ public class TaskListController {
 	@RequestMapping("/tasklist")
 	@ResponseBody
 	public Iterable<Task> list(Map<String, Object> model) {
-		return this.taskRepo.findAll();
+		return this.service.list();
 	}
 
 	/**
@@ -43,7 +43,7 @@ public class TaskListController {
 	 */
 	@RequestMapping("/savetask")
 	public String save(@RequestBody Task task) {
-		this.taskRepo.save(task);
+		this.service.save(task);
 		return INDEX;
 	}
 
