@@ -9,7 +9,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
-import { stringify } from 'querystring';
 
 function App() {
 
@@ -28,6 +27,7 @@ function App() {
   // Handlers de eventos de atualização do formulário 
   const handleTitleChange = (event: { target: { value: React.SetStateAction<string>; }; }) => setTitle(event.target.value);
 
+  // Inicialização, com GET para listar as Tasks
   useEffect(() => {
     fetch("/tasklist")
       .then((response) => response.json())
@@ -36,6 +36,7 @@ function App() {
       });
   }, []);
 
+  // Estilização
   const useStyles = makeStyles(theme => ({
     head: {
       marginTop: theme.spacing(7),
@@ -64,6 +65,7 @@ function App() {
   }));
   const classes = useStyles();
 
+  // Handler do botão Save
   const handleSubmit = (values: any) => {
     const toSave = { title, description, status, creation, lastEdition, removal, conclusion };
 
@@ -85,11 +87,12 @@ function App() {
     });
   }
 
+  // Handler da checkbox que indica se Task está ou não completa
   const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // TODO
   };
 
-
+  // Componentes da interface
   return (
     <Container component="main" maxWidth="sm">
       <CssBaseline />
@@ -136,7 +139,6 @@ function App() {
         </form>
 
       </div>
-
 
     </Container>
   );
