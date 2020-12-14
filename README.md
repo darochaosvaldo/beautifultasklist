@@ -3,7 +3,7 @@
 Desafio Supero - Osvaldo da Rocha
 
 Tecnologias utilizadas:
-- React (frontend)
+- React e Typescript (frontend)
 - Java e Spring (backend)
 - Liquibase (manipulação da base de dados)
 - Postgres (SGBD)
