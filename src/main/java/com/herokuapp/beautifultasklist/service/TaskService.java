@@ -10,4 +10,6 @@ public interface TaskService {
 
 	public void save(Task task);
 
+	public void delete(Long id);
+
 }

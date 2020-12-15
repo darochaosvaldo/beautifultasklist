@@ -47,4 +47,13 @@ public class TaskListController {
 		return INDEX;
 	}
 
+	/**
+	 * Método responsável pela deleção de uma task
+	 */
+	@RequestMapping("/deletetask")
+	public String delete(@RequestBody Long id) {
+		this.service.delete(id);
+		return INDEX;
+	}
+
 }

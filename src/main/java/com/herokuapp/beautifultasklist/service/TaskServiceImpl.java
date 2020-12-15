@@ -41,4 +41,9 @@ public class TaskServiceImpl implements TaskService {
 		this.repo.save(task);
 	}
 
+	@Override
+	public void delete(Long id) {
+		this.repo.deleteById(id);
+	}
+
 }

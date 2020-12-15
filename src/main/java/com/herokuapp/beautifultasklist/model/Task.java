@@ -16,7 +16,7 @@ public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private Integer id;
+	private Long id;
 
 	@Column(name = "ds_title")
 	private String title;
@@ -33,11 +33,11 @@ public class Task {
 	@Column(name = "dt_conclusion")
 	private Date conclusion;
 
-	public Integer getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
